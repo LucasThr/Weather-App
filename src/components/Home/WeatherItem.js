@@ -1,10 +1,15 @@
 import React from 'react';
 
-const WeatherItem = ({data}) => {
+const WeatherItem = ({item}) => {
+  const {asset, data, suffix, name} = item;
   return (
-    <div className="flex flex-col w-full  mx-2 bg-sky-500 justify-center items-center rounded">
-      <span className="font-bold">{data.data}</span>
-      <span>{data.name}</span>
+    <div className="flex flex-col w-full mx-2 justify-between items-center rounded">
+      <img className="h-10 w-10 mb-1" src={asset} />
+      <span className="font-bold">
+        {data}
+        {suffix}
+      </span>
+      <span>{name}</span>
     </div>
   );
 };

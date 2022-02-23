@@ -4,22 +4,25 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {render} from 'react-dom';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import Home from './views/Home';
 import {createOvermind} from 'overmind';
 import {config} from './overmind';
-import CityWeather from './views/CityWeather';
+import {Provider} from 'overmind-react';
+import HomeView from './views/HomeView';
+import CityView from './views/CityView';
+import moment from 'moment';
 
 const overmind = createOvermind(config);
 
 const rootElement = document.getElementById('root');
-
 render(
   <React.StrictMode>
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="meteo/:city" element={<CityWeather />} />
-      </Routes>
+      <Provider value={overmind}>
+        <Routes>
+          <Route path="/" element={<HomeView />} />
+          <Route path="meteo/:city" element={<CityView />} />
+        </Routes>
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>,
   rootElement,
