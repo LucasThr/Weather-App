@@ -1,7 +1,9 @@
 import moment from 'moment';
 
 const getDayFromDate = (day) => {
-  moment.locale();
+  moment.locale('fr', {
+    weekdaysShort: 'lun._mar._mer._jeu._ven._sam._dim.'.split('_'),
+  });
 
   return moment.unix(day).format('ddd');
 };
