@@ -7,11 +7,10 @@ import {weatherService} from '../services/weather.service';
 const CityView = (props) => {
   const {city} = useParams();
   const [actualCityData, setActualCityData] = useState([]);
-  console.log('city', city);
+
   useEffect(async () => {
     let cityData = await weatherService.getTodayCityWeather(city);
     setActualCityData(cityData);
-    console.log('cityData', cityData);
   }, [city]);
 
   return (

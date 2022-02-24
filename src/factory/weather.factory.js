@@ -3,6 +3,8 @@ import {getNumberHourToReturn} from '../helpers/date.helper';
 
 const weatherFactory = {
   transformDataForCardCity(raw) {
+    let rain = raw.rain ? raw.rain['1h'] * 100 : 0;
+    rain = rain.toFixed(0);
     return {
       name: raw.name,
       id: raw.id,
@@ -27,7 +29,7 @@ const weatherFactory = {
         },
         {
           name: 'Pluie',
-          data: raw.rain ?? 0,
+          data: rain,
           asset: images.rainIcon,
           suffix: '%',
         },
@@ -37,7 +39,6 @@ const weatherFactory = {
 
   transformDataForCitiesFavorites(raw) {
     let citiesData = [];
-    console.log('raw', raw);
     raw.list.map((city) => {
       citiesData.push(this.transformDataForCardCity(city));
     });
