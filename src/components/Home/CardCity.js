@@ -39,7 +39,9 @@ const CardCity = ({cityName, weather}) => {
         </div>
         {weather ? (
           <>
-            <h2 className="text-3xl font-bold mt-10">{cityName}</h2>
+            <h2 className="text-3xl font-bold mt-16 mx-10 text-center ">
+              {cityName}
+            </h2>
             <img className="h-32" src={images[weather.asset]} />
             <h2 className="text-6xl font-bold mt-1">{temp ?? '~'}°C</h2>
           </>
