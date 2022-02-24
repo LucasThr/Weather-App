@@ -5,7 +5,7 @@ import ForecastDay from './ForecastDay';
 import CardCity from './Home/CardCity';
 import Spinner from './Spinner';
 
-const CityContainer = ({city}) => {
+const CityContainer = ({city, title}) => {
   const [forecastData, setForecastData] = useState([]);
 
   useEffect(async () => {
@@ -20,6 +20,10 @@ const CityContainer = ({city}) => {
 
   return (
     <div className="snap-center min-h-screen flex flex-col w-full items-center shrink-0">
+      <h3
+        className={`w-full ml-8 mb-4 text-2xl ${!title && 'text-transparent'}`}>
+        {title || '_'}
+      </h3>
       {city.length !== 0 ? (
         <div className="h-full w-full ">
           <CardCity cityName={city.name} weather={city} />

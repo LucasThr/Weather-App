@@ -35,9 +35,15 @@ const HomeView = (props) => {
     <main className="overflow-hidden  w-full flex relative items-center flex-col h-full bg-gray-800 text-white ">
       <Navbar />
       <div className="flex w-full snap-x mx-auto h-auto overflow-scroll">
-        <CityContainer city={actualCity} />
+        <CityContainer title={'Position actuelle'} city={actualCity} />
         {dataCities.map((city, item) => {
-          return <CityContainer key={item} city={city} />;
+          return (
+            <CityContainer
+              title={item === 0 && 'Favoris'}
+              key={item}
+              city={city}
+            />
+          );
         })}
       </div>
     </main>
