@@ -6,7 +6,7 @@ const FavoriteIcon = ({show, onClick}) => {
       <svg
         onClick={onClick}
         xmlns="http://www.w3.org/2000/svg"
-        className="h-6 w-6"
+        className="h-10 w-10"
         viewBox="0 0 20 20"
         fill="currentColor">
         <path
@@ -21,7 +21,7 @@ const FavoriteIcon = ({show, onClick}) => {
       <svg
         onClick={onClick}
         xmlns="http://www.w3.org/2000/svg"
-        className="h-6 w-6"
+        className="h-10 w-10"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor">

@@ -9,7 +9,7 @@ const Navbar = () => {
     <>
       <nav className="w-full text-white flex justify-between items-center px-5 mt-4 pb-6 pt-2">
         <Link className="text-2xl" to="/">
-          Weather App
+          Météo
         </Link>
 
         <button onClick={() => setModalVisible(!modalVisible)} className="">

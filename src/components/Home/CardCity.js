@@ -32,27 +32,29 @@ const CardCity = ({cityName, weather}) => {
   };
   let temp = weather.temp.toFixed(0);
   return (
-    <main className=" relative h-[70vh] flex flex-col justify-between pt-5 items-center w-11/12 bg-gradient-to-b from-cyan-600 to-blue-500 shadow-lg rounded-xl mx-2">
-      <div className="absolute right-10">
-        <FavoriteIcon show={isFav} onClick={() => onClickFavorite(isFav)} />
-      </div>
-      {weather ? (
-        <>
-          <h2 className="text-3xl font-bold mt-10">{cityName}</h2>
-          <img className="h-32" src={images[weather.asset]} />
-          <h2 className="text-6xl font-bold mt-1">{temp ?? '~'}°C</h2>
-        </>
-      ) : (
-        <Spinner />
-      )}
-      <div className="flex w-11/12 py-10 border-t ">
+    <main className="flex justify-center w-full ">
+      <div className=" relative h-[70vh] flex flex-col justify-between pt-5 items-center w-11/12 self-center mx-2 bg-gradient-to-b from-cyan-600 to-blue-500 shadow-lg rounded-xl ">
+        <div className="absolute right-6">
+          <FavoriteIcon show={isFav} onClick={() => onClickFavorite(isFav)} />
+        </div>
         {weather ? (
-          weather.subInfos?.map((data, index) => {
-            return <WeatherItem key={index} item={data} />;
-          })
+          <>
+            <h2 className="text-3xl font-bold mt-10">{cityName}</h2>
+            <img className="h-32" src={images[weather.asset]} />
+            <h2 className="text-6xl font-bold mt-1">{temp ?? '~'}°C</h2>
+          </>
         ) : (
-          <></>
+          <Spinner />
         )}
+        <div className="flex w-11/12 py-10 border-t ">
+          {weather ? (
+            weather.subInfos?.map((data, index) => {
+              return <WeatherItem key={index} item={data} />;
+            })
+          ) : (
+            <></>
+          )}
+        </div>
       </div>
     </main>
   );

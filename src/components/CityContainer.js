@@ -19,13 +19,13 @@ const CityContainer = ({city}) => {
   }, [city]);
 
   return (
-    <div className="snap-center h-auto flex flex-col w-screen items-center shrink-0">
+    <div className="snap-center min-h-screen flex flex-col w-full items-center shrink-0">
       {city.length !== 0 ? (
-        <>
+        <div className="h-full w-full ">
           <CardCity cityName={city.name} weather={city} />
           <ForecastDailyHour hoursWeather={forecastData.hours} />
           <ForecastDay daysWeather={forecastData.days} />
-        </>
+        </div>
       ) : (
         <div className="h-screen w-full">
           <Spinner />
