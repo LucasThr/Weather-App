@@ -16,7 +16,7 @@ const SearchModal = ({hideModal}) => {
   const handlePressEnter = (key) => {
     if (key === 'Enter' && foundCity) {
       hideModal();
-      navigate(`/meteo/${foundCity[0]}`);
+      navigate(`/meteo/${foundCity[0].id}`);
     }
   };
 
@@ -48,10 +48,15 @@ const SearchModal = ({hideModal}) => {
             placeholder="Recherche..."
           />
         </div>
-        <div>
+        <ul>
           {foundCity ? (
-            foundCity.map((city) => (
-              <FoundCity hideModal={() => hideModal()} city={city} />
+            foundCity.map((city, item) => (
+              <FoundCity
+                key={item}
+                id={city.id}
+                hideModal={() => hideModal()}
+                city={city.name}
+              />
             ))
           ) : (
             <>
@@ -64,7 +69,7 @@ const SearchModal = ({hideModal}) => {
               )}
             </>
           )}
-        </div>
+        </ul>
       </div>
     </main>
   );

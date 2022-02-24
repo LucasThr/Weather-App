@@ -9,7 +9,7 @@ const CityView = (props) => {
   const [actualCityData, setActualCityData] = useState([]);
 
   useEffect(async () => {
-    let cityData = await weatherService.getTodayCityWeather(city);
+    let cityData = await weatherService.getWeatherCityWithId(city);
     setActualCityData(cityData);
   }, [city]);
 

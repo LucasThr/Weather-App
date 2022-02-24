@@ -1,8 +1,9 @@
 const weatherRepository = {
-  async getWeatherWithCity(name) {
+  async getWeatherWithId(id) {
+    console.log('id', id);
     try {
       const res = await fetch(
-        `${process.env.REACT_APP_API_URL}/find?q=${name}&appid=${process.env.REACT_APP_API_KEY}&units=metric&lang=fr`,
+        `${process.env.REACT_APP_API_URL}/group?id=${id}&appid=${process.env.REACT_APP_API_KEY}&units=metric&lang=fr`,
       );
       return await res.json();
     } catch (error) {
@@ -31,6 +32,7 @@ const weatherRepository = {
       console.log('error : ', error);
     }
   },
+
   async getWeatherForecast(lat, lon) {
     try {
       const res = await fetch(

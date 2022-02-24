@@ -2,8 +2,8 @@ import {weatherFactory} from '../factory/weather.factory';
 import {weatherRepository} from '../repository/weather.repository';
 
 const weatherService = {
-  async getTodayCityWeather(cityName) {
-    const rawData = await weatherRepository.getWeatherWithCity(cityName);
+  async getWeatherCityWithId(id) {
+    const rawData = await weatherRepository.getWeatherWithId(id);
     const cityInfos = weatherFactory.transformDataForCardCity(rawData.list[0]);
     return cityInfos;
   },
@@ -14,6 +14,7 @@ const weatherService = {
     });
     citiesJoin = citiesJoin.join(',');
     const raw = await weatherRepository.getWeatherFavoritesCities(citiesJoin);
+    if (raw.count <= 0 || raw.cod === '404') return [];
     const citiesInfos = weatherFactory.transformDataForCitiesFavorites(raw);
     return citiesInfos;
   },
