@@ -26,7 +26,7 @@ const SearchModal = ({hideModal}) => {
         if (e.target === e.currentTarget) hideModal();
       }}
       className="flex w-full min-h-screen bg-opacity-50 justify-center bg-black absolute ">
-      <div className="absolute z-40 w-10/12 top-20 bg-white h-auto text-white flex flex-col justify-start rounded-xl dark:bg-gray-600 ">
+      <div className="absolute z-40 w-10/12 top-20 h-auto text-white flex flex-col justify-start rounded-xl bg-gray-600 ">
         <div className="flex justify-center items-center w-full h-10 rounded-xl border-2 border-sky-400">
           <svg
             xmlns="http://www.w3.org/2000/svg"

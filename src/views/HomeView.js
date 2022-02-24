@@ -32,7 +32,7 @@ const HomeView = (props) => {
   };
 
   return (
-    <main className="overflow-hidden  w-full flex relative items-center flex-col h-full bg-gray-800 dark:text-white text-black">
+    <main className="overflow-hidden  w-full flex relative items-center flex-col h-full bg-gray-800 text-white ">
       <Navbar />
       <div className="flex w-full snap-x mx-auto h-auto overflow-scroll">
         <CityContainer city={actualCity} />
