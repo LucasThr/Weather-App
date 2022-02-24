@@ -37,6 +37,7 @@ const weatherFactory = {
 
   transformDataForCitiesFavorites(raw) {
     let citiesData = [];
+    console.log('raw', raw);
     raw.list.map((city) => {
       citiesData.push(this.transformDataForCardCity(city));
     });
