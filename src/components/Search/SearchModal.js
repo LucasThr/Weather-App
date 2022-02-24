@@ -49,10 +49,21 @@ const SearchModal = ({hideModal}) => {
           />
         </div>
         <div>
-          {foundCity &&
+          {foundCity ? (
             foundCity.map((city) => (
               <FoundCity hideModal={() => hideModal()} city={city} />
-            ))}
+            ))
+          ) : (
+            <>
+              {cityInput ? (
+                <div className="flex py-3 px-3 hover:bg-gray-400 rounded-xl">
+                  Aucun résultat
+                </div>
+              ) : (
+                <></>
+              )}
+            </>
+          )}
         </div>
       </div>
     </main>

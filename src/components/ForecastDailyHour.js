@@ -7,7 +7,7 @@ const ForecastDailyHour = ({hoursWeather}) => {
     return (
       <div className="flex w-full h-auto overflow-scroll  pl-4 mt-4">
         {hoursWeather.map((hour, item) => {
-          return <CardHour key={item} hourWeather={hour} />;
+          return <CardHour key={item} id={item} hourWeather={hour} />;
         })}
       </div>
     );

@@ -8,14 +8,19 @@ const HomeView = (props) => {
   const [dataCities, setDataCities] = useState([]);
   const [actualCity, setActualCity] = useState([]);
   const {favoritesCities} = useAppState();
+
   useEffect(() => {
     getApiInfo();
     getActualPostition();
   }, [favoritesCities]);
 
   const getActualPostition = async () => {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      console.log(position.coords.latitude, position.coords.longitude);
+    navigator.geolocation.getCurrentPosition(async function (position) {
+      let actualWeather = await weatherService.getWeatherWithPosition(
+        position.coords.latitude,
+        position.coords.longitude,
+      );
+      setActualCity(actualWeather);
     });
   };
 

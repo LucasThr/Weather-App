@@ -1,19 +1,17 @@
 import images from '../assets/images';
+import {getNumberHourToReturn} from '../helpers/date.helper';
 
 const weatherFactory = {
   transformDataForCardCity(raw) {
     return {
       name: raw.name,
       id: raw.id,
-      infos: {
-        name: 'temp',
-        data: raw.main.temp,
-      },
+      temp: raw.main.temp,
       coord: {
         lat: raw.coord.lat,
         lon: raw.coord.lon,
       },
-      asset: raw.weather.main,
+      asset: raw.weather[0].main.toLowerCase(),
       subInfos: [
         {
           name: 'Humidité',
@@ -36,6 +34,7 @@ const weatherFactory = {
       ],
     };
   },
+
   transformDataForCitiesFavorites(raw) {
     let citiesData = [];
     raw.list.map((city) => {
@@ -43,9 +42,10 @@ const weatherFactory = {
     });
     return citiesData;
   },
+
   getForecastFromFactory(raw) {
-    console.log('raw', raw);
-    let forecastDaysList = raw.daily.map((day) => {
+    const maxHourToReturn = getNumberHourToReturn(raw.hourly[0].dt);
+    let forecastDaysList = raw.daily.map((day, item) => {
       return {
         temp: {
           day: day.temp.day,
@@ -56,13 +56,14 @@ const weatherFactory = {
         date: day.dt,
       };
     });
-    let forecastHoursList = raw.hourly.map((hour) => {
-      return {
-        temp: hour.temp,
-        asset: hour.weather[0].main.toLowerCase(),
-        date: hour.dt,
-      };
-    });
+    let forecastHoursList = [];
+    for (let hour = 0; hour < maxHourToReturn; hour++) {
+      forecastHoursList.push({
+        temp: raw.hourly[hour].temp,
+        asset: raw.hourly[hour].weather[0].main.toLowerCase(),
+        date: raw.hourly[hour].dt,
+      });
+    }
     return {
       days: forecastDaysList,
       hours: forecastHoursList,

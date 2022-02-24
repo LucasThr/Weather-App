@@ -7,9 +7,9 @@ import {
   toggleFavorite,
 } from '../../helpers/favorites.helper';
 import Spinner from '../Spinner';
+import images from '../../assets/images';
 
 const CardCity = ({cityName, weather}) => {
-  console.log('weather', weather);
   const [isFav, setIsFav] = useState(false);
   const state = useAppState();
   const actions = useActions();
@@ -30,7 +30,7 @@ const CardCity = ({cityName, weather}) => {
     );
     setIsFav(!isFav);
   };
-  let temp = weather?.infos?.data?.toFixed(0);
+  let temp = weather.temp.toFixed(0);
   return (
     <main className=" relative h-[70vh] flex flex-col justify-between pt-5 items-center w-11/12 bg-gradient-to-b from-cyan-600 to-blue-500 shadow-lg rounded-xl mx-2">
       <div className="absolute right-10">
@@ -39,7 +39,8 @@ const CardCity = ({cityName, weather}) => {
       {weather ? (
         <>
           <h2 className="text-3xl font-bold mt-10">{cityName}</h2>
-          <h2 className="text-6xl font-bold mt-4">{temp ?? '~'}°C</h2>
+          <img className="h-32" src={images[weather.asset]} />
+          <h2 className="text-6xl font-bold mt-1">{temp ?? '~'}°C</h2>
         </>
       ) : (
         <Spinner />

@@ -10,4 +10,10 @@ const getHourFromDate = (day) => {
   return moment.unix(day).format('kk:mm');
 };
 
-export {getDayFromDate, getHourFromDate};
+const getNumberHourToReturn = (hours) => {
+  let actualHour = moment.unix(hours).format('kk');
+
+  return 24 - actualHour;
+};
+
+export {getDayFromDate, getHourFromDate, getNumberHourToReturn};

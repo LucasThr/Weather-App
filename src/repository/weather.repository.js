@@ -13,6 +13,12 @@ const weatherRepository = {
     return await res.json();
   },
 
+  async getWeatherWithCoords(lat, lon) {
+    const res = await fetch(
+      `${process.env.REACT_APP_API_URL}/find?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}&units=metric&lang=fr`,
+    );
+    return await res.json();
+  },
   async getWeatherForecast(lat, lon) {
     const res = await fetch(
       `${process.env.REACT_APP_API_URL}/onecall?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}&units=metric&lang=fr`,

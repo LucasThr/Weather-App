@@ -6,7 +6,7 @@ const searchRepository = {
       );
       return await res.json();
     } catch (error) {
-      console.log('error', error);
+      console.log('error :', error);
       return null;
     }
   },
