@@ -1,6 +1,5 @@
 const weatherRepository = {
   async getWeatherWithId(id) {
-    console.log('id', id);
     try {
       const res = await fetch(
         `${process.env.REACT_APP_API_URL}/group?id=${id}&appid=${process.env.REACT_APP_API_KEY}&units=metric&lang=fr`,

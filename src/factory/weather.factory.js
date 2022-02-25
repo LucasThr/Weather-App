@@ -38,9 +38,8 @@ const weatherFactory = {
   },
 
   transformDataForCitiesFavorites(raw) {
-    let citiesData = [];
-    raw.list.map((city) => {
-      citiesData.push(this.transformDataForCardCity(city));
+    let citiesData = raw.list.map((city) => {
+      return this.transformDataForCardCity(city);
     });
     return citiesData;
   },
